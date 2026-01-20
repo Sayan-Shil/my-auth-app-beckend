@@ -1,0 +1,10 @@
+# Ignore everything
+*
+
+# Allow src and src/main
+!src/
+!src/main/
+!src/main/**
+
+# Allow .gitignore itself
+!.gitignore

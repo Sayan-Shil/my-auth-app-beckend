@@ -1,0 +1,13 @@
+spring:
+  application:
+    name: my-auth-app
+  profiles:
+    active: dev #Environment : SPRING_PROFILES_ACTIVE=dev
+server:
+  port: 8082
+
+
+#Configuration
+#Database Configuration
+#Email Configuration
+#OAuth2 Configuration
