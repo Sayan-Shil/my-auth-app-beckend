@@ -1,10 +1,11 @@
-package com.sayan.auth.myauthappbeckend.services;
+package com.sayan.auth.myauthappbeckend.services.impl;
 
 import com.sayan.auth.myauthappbeckend.dtos.UserDTO;
 import com.sayan.auth.myauthappbeckend.entities.Provider;
 import com.sayan.auth.myauthappbeckend.entities.User;
 import com.sayan.auth.myauthappbeckend.exceptions.UserNotFoundException;
 import com.sayan.auth.myauthappbeckend.repositories.UserRepository;
+import com.sayan.auth.myauthappbeckend.services.UserService;
 import com.sayan.auth.myauthappbeckend.utils.UserHelper;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
@@ -12,7 +13,6 @@ import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
 import java.time.Instant;
-import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor

@@ -32,5 +32,10 @@ spring:
 
 # JPA and Hibernate Configuration
 
+logging:
+  level:
+    org.springframework.security: DEBUG
+
+
 
 
