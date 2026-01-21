@@ -37,5 +37,17 @@ logging:
     org.springframework.security: DEBUG
 
 
+# Jwt Security Related Configuration
+security:
+  jwt:
+    secret: ${JWT_SECRET:iryhgferysgf,uegfaewgf9icjva2ecrd8yvuejgdqgrfqewfurqeyjgrfquk}
+    issuer: ${JWT_ISSUER:myauthapp.com}
+    access-ttl-seconds: ${JWT_ACCESS_TTL_SECONDS:86400}
+    refresh-ttl-seconds: ${JWT_REFRESH_TTL_SECONDS:86400}
+    refresh-token-cookie-name: ${JWT_REFRESH_COOKIE_NAME:refreshToken}
+    cookie-secure: ${JWT_COOKIE_SECURE:true}
+    cookie-http-only: ${JWT_COOKIE_HTTP_ONLY:true}
+    cookie-same-site: ${JWT_COOKIE_SAME_SITE:lax}
+
 
 

@@ -1,5 +1,6 @@
 package com.sayan.auth.myauthappbeckend.services.impl;
 
+import com.sayan.auth.myauthappbeckend.dtos.LoginRequest;
 import com.sayan.auth.myauthappbeckend.dtos.UserDTO;
 import com.sayan.auth.myauthappbeckend.services.AuthService;
 import com.sayan.auth.myauthappbeckend.services.UserService;
@@ -19,4 +20,5 @@ public class AuthServiceImpl implements AuthService {
         UserDTO userDto = userService.createUser(userDTO);
         return userDto;
     }
+
 }
