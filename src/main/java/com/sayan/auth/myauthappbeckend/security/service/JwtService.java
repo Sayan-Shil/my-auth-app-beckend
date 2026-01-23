@@ -112,5 +112,10 @@ public class JwtService {
         return UUID.fromString(c.getId());
     }
 
+    // Get Token Id from Jwt
+    public String getJti(String token){
+        return parse(token).getPayload().getId();
+    }
+
 
 }
