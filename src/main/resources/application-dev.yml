@@ -1,43 +1,38 @@
-# Development Version
 server:
-  port: 8081
+  port: 8083
 
-#Database Connection
 spring:
   datasource:
     url: jdbc:mysql://localhost:3306/my_auth_app?useSSL=false&serverTimezone=UTC
     username: root
     password: Sayan@CSE2004@Sayan
-#    hikari:
-#      pool-name: HikariCP
-#      maximum-pool-size: 6
-#      connection-timeout: 1000000
-#      idle-timeout: 6000000
-#      max-lifetime: 18000000
-#      validation-timeout: 18000000
-#      leak-detection-threshold: 0
-#      initialization-fail-timeout: -1
-
-
 
   jpa:
     hibernate:
       ddl-auto: update
-
     properties:
       hibernate:
         dialect: org.hibernate.dialect.MySQLDialect
         format_sql: true
     show-sql: true
 
-# JPA and Hibernate Configuration
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id: ${GOOGLE_CLIENT_ID}
+            client-secret: ${GOOGLE_CLIENT_SECRET}
+            scope:
+              - email
+              - profile
+              - openid
 
 logging:
   level:
     org.springframework.security: DEBUG
 
-
-# Jwt Security Related Configuration
+# Custom application security (NOT Spring Security auto-config)
 security:
   jwt:
     secret: ${JWT_SECRET:iryhgferysgf,uegfaewgf9icjva2ecrd8yvuejgdqgrfqewfurqeyjgrfquk}
@@ -49,6 +44,3 @@ security:
     cookie-http-only: ${JWT_COOKIE_HTTP_ONLY:true}
     cookie-same-site: ${JWT_COOKIE_SAME_SITE:lax}
     cookie-domain: ${JWT_COOKIE_DOMAIN:localhost}
-
-
-

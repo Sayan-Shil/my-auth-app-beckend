@@ -2,6 +2,8 @@ package com.sayan.auth.myauthappbeckend.configuration;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.sayan.auth.myauthappbeckend.security.JwtAuthenticationFilter;
+import com.sayan.auth.myauthappbeckend.security.OAuth2FailureHandler;
+import com.sayan.auth.myauthappbeckend.security.OAuth2SuccessHandler;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -46,6 +48,7 @@ public class SecurityConfig {
 
 
     private final JwtAuthenticationFilter jwtAuthenticationFilter;
+    private final OAuth2SuccessHandler oAuth2SuccessHandler;
 
     @Bean
     public PasswordEncoder passwordEncoder(){
@@ -64,8 +67,14 @@ public class SecurityConfig {
                         .requestMatchers("/api/v1/auth/login").permitAll()
                         .requestMatchers("/api/v1/auth/refresh").permitAll()
                         .requestMatchers("/api/v1/auth/logout").permitAll()
+                        .requestMatchers("/api/v1/oauth2/**").permitAll()
                         .anyRequest().authenticated()
                 )
+                .oauth2Login(oauth2->{
+                    oauth2.successHandler(oAuth2SuccessHandler)
+                            .failureHandler(null);
+                })
+                .logout(AbstractHttpConfigurer::disable)
                 .httpBasic(Customizer.withDefaults())
                 .csrf(AbstractHttpConfigurer::disable)
                 .cors(Customizer.withDefaults())
